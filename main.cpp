@@ -5,29 +5,35 @@
 
 void (*pfunc)();
 
-typedef int (*newType)(int *);
+typedef void (*newType)(int *, int *);
 
-int SelectNum(int num) {
+void SelectNum(newType n, int second) {
+	srand((unsigned int)time(NULL));
+	int rNum = rand() % 2 + 1;
+	printf("%d\n", rNum);
+	int num = 0;
 	printf("サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。\n");
 	scanf_s("%d", &num);
-	return num;
+
+	Sleep(second * 1000);
+
+	n(&rNum, &num);
 }
 
-void checkAnswer(int a,int b) {
-	Sleep(3 * 1000);
+void checkAnswer(int* a, int* b) {
 	if (a == b) {
-		printf("当たり");
+		printf("当たり\n");
 	}else{
-		printf("はずれ");
+		printf("はずれ\n");
 	}
 }
 
 int main() {
-	int num = 0;
-	srand((unsigned int)time(NULL));
-	int rNum = rand() % 2 + 1;
 
-	num = SelectNum(num);
-	checkAnswer(num,rNum);
+	newType n;
+	n = checkAnswer;
+	SelectNum(n, 3);
+
+
 	return 0;
 }
