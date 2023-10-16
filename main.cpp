@@ -1,32 +1,32 @@
 ﻿#include <stdio.h>
+#include <Windows.h>
+#include <stdlib.h>
+#include <time.h>
 
-int SalaryPerHour(int n) {
-	if (n <= 1) {
-		return 100;
-	}
-	return ( (SalaryPerHour(n-1) * 2 - 50));
+void (*pfunc)();
+
+typedef int (*newType)(int a);
+
+int SelectNum(int num) {
+	printf("サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。\n");
+	scanf_s("%d", &num);
+	return num;
 }
-int TotalSalary(int n) {
-	if (n <= 1) {
-		return 100;
+
+void checkAnswer(int a,int b) {
+	if (a == b) {
+		printf("当たり");
+	}else{
+		printf("はずれ");
 	}
-	return (SalaryPerHour(n) + TotalSalary(n - 1));
 }
-//1 100
-//2 150  50         250
-//3 250  100       500
-//4 450  200       950
-//5 850  400       1800		 
-//6 1650  800
+
 int main() {
-	int n = 8;
-	int result;
-	int Normal = 1072;
+	int num = 0;
+	srand((unsigned int)time(NULL));
+	int rNum = rand() % 2 + 1;
 
-	result = TotalSalary(n);
-
-	printf("再帰的 : %d\n", result);
-	printf("一般的 : %d\n", Normal* n);;
-
+	num = SelectNum(num);
+	checkAnswer(num,rNum);
 	return 0;
 }
