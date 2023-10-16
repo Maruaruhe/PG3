@@ -5,7 +5,7 @@
 
 void (*pfunc)();
 
-typedef int (*newType)(int a);
+typedef int (*newType)(int *);
 
 int SelectNum(int num) {
 	printf("サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。\n");
@@ -14,6 +14,7 @@ int SelectNum(int num) {
 }
 
 void checkAnswer(int a,int b) {
+	Sleep(3 * 1000);
 	if (a == b) {
 		printf("当たり");
 	}else{
