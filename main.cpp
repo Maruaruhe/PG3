@@ -3,6 +3,7 @@
 #include <iostream>
 
 int main() {
+
 	SetConsoleOutputCP(65001);
 	char str[] = "私";
 	printf("%s", str);
