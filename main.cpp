@@ -10,6 +10,7 @@ Type min(Type a, Type b) {
 		num = b;
 	}
 	return static_cast<Type>(num);
+
 }
 
 template<>
@@ -21,7 +22,7 @@ int main() {
 	printf("%d\n", min<int>(100, 200));
 	printf("%f\n", min<float>(10.0f, 20.0f));
 	printf("%lf\n", min<double>(30.0f, 20.0f));
-	printf("%c\n", min<char>( 81, 23));
+	min<char>(81, 23);
 
 	return 0;
 }
