@@ -1,5 +1,4 @@
-﻿#include <stdio.h>
-
+#include <stdio.h>
 
 template <typename Type>
 Type min(Type a, Type b) {
