@@ -4,8 +4,8 @@
 
 int main() {
 	Min<int,int> n1(22, 20);
-	Min<int, float> n2(10, 0.6f);
-	Min<int, double> n3(5, 3.6);
+	Min<int, float> n2(1, 3.6f);
+	Min<int, double> n3(5, 7.6);
 	Min<float, float>n4(3.1f, 2.5f);
 	Min<float, double>n5(1.2f, 0.4);
 	Min<double, double>n6(3.6, 4.3);

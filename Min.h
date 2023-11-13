@@ -8,7 +8,7 @@ public:
 	Min(T1 num1, T2 num2) :num1_(num1), num2_(num2) {}
 
 
-	T2 GetMin() {
+	T1 GetMin() {
 		if (num1_ <= num2_) {
 			return static_cast<T1>(num1_);
 		}
