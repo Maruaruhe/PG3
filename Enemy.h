@@ -2,16 +2,18 @@
 class Enemy
 {
 public:
-	Enemy();
-	~Enemy();
 	void Updata();
 
 	void approach();
-	void Shoot();
-	void run();
+	void shoot();
+	void leave();
 private:
-	static void (Enemy::* pFunc[])();
+	static void (Enemy::*pFunc[])();
 
-	//static_cast<size_t>(phase_)
+	enum EnemyState{
+		Approach,
+		Shoot,
+		Leave
+	};
 };
 

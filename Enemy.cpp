@@ -1,20 +1,26 @@
 #include "Enemy.h"
 #include <stdio.h>
 
-Enemy::Enemy() {
-	//pFunc = &Enemy::approach;
-}
-
-void (Enemy::Enemy::* pFunc[])() {
+void (Enemy::*Enemy::pFunc[])() {
 	&Enemy::approach,
-	&Enemy::Shoot,
-	&Enemy::run
+	&Enemy::shoot,
+	&Enemy::leave
 };
 
 void Enemy::Updata() {
-
+	(this->*pFunc[Approach])();
+	(this->*pFunc[Shoot])();
+	(this->*pFunc[Leave])();
 }
 
 void Enemy::approach() {
 	printf("接近中...\n");
+}
+
+void Enemy::shoot() {
+	printf("発射!\n");
+}
+
+void Enemy::leave() {
+	printf("撤退\n");
 }
