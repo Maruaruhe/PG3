@@ -3,11 +3,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-void (*pfunc)();
+typedef void (*pFunc)(int , int );
 
-typedef void (*newType)(int , int );
-
-void SelectNum(newType n, int second) {
+void SelectNum(pFunc n, int second) {
 	srand((unsigned int)time(NULL));
 	int rNum = rand() % 2 + 1;
 	//printf("%d\n", rNum);
@@ -30,9 +28,9 @@ void checkAnswer(int a, int b) {
 
 int main() {
 
-	newType n;
-	n = checkAnswer;
-	SelectNum(n, 3);
+	pFunc pCallBack;
+	pCallBack = checkAnswer;
+	SelectNum(pCallBack, 3);
 
 
 	return 0;
