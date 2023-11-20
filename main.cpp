@@ -8,6 +8,10 @@ void (*pfunc)();
 
 typedef void (*newType)(int , int );
 
+void SetTimeOut(int second) {
+	Sleep(second * 1000);
+}
+
 void SelectNum(newType n, int second) {
 	srand((unsigned int)time(NULL));
 	int rNum = rand() % 2 + 1;
@@ -26,6 +30,7 @@ void SelectNum(newType n, int second) {
 
 void checkAnswer(int a, int b) {
 	if (a == b) {
+		std::cout << "int, int : " << n1.GetMin() << std::endl;
 		printf("正解\n");
 	}else{
 		printf("不正解\n");
