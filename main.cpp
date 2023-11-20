@@ -36,9 +36,9 @@ int main(int argc, const char* argv[]) {
 		}
 	};
 
-	std::function<void()> p;
-	p = checkAnswer;
-	SetTimeOut(p,3);
+	std::function<void()> pCallBack;
+	pCallBack = checkAnswer;
+	SetTimeOut(pCallBack,3);
 
 	return 0;
 };
