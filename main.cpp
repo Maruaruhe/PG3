@@ -3,51 +3,61 @@
 #include <stdlib.h>
 #include <time.h>
 #include <functional>
+#include <iostream>
 
-void (*pfunc)();
+//typedef void (*pFunc)();
+typedef std::function<void()> (*pFunc)();
 
-typedef void (*newType)(int , int );
-
-void SetTimeOut(int second) {
+void SetTimeOut(std::function<void()> p,int second) {
 	Sleep(second * 1000);
+
+	p();
 }
 
-void SelectNum(newType n, int second) {
+int GetRandom() {
 	srand((unsigned int)time(NULL));
 	int rNum = rand() % 2 + 1;
-	
-	//std::function<int(int)> random=[int rNum]
 
-	//printf("%d\n", rNum);
-	int num = 0;
-	printf("サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。\n");
-	scanf_s("%d", &num);
-	
-	Sleep(second * 1000);
-
-	n(rNum, num);
+	return rNum;
 }
 
-void checkAnswer(int a, int b) {
-	if (a == b) {
-		std::cout << "int, int : " << n1.GetMin() << std::endl;
-		printf("正解\n");
-	}else{
-		printf("不正解\n");
-	}
-}
+int main(int argc, const char* argv[]) {
+	int randomNumber = GetRandom();
+	int diceNumber = 0;
+	std::cout << "サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。" << std::endl;
+	scanf_s("%d", &diceNumber);
 
-int main(int argc,const char *argv[]) {
-	[]() {printf("test\n"); }();
-	//
-	std::function<int(int)> fx = [](int i) {return i + 1; };
-	printf("%d\n", fx(2));
+	std::function<void()> random = [=]() {
+		if (randomNumber == diceNumber) {
+			std::cout << "正解" << std::endl;
+		}
+		else {
+			std::cout << "不正解" << std::endl;
+		}
+	};
 
-
-	//newType n;
-	//n = checkAnswer;
-	//SelectNum(n, 3);
-
+	std::function<void()> p;
+	p = random;
+	SetTimeOut(p,3);
 
 	return 0;
-}
+};
+
+
+//void SelectNum( int second) {
+//	srand((unsigned int)time(NULL));
+//	int rNum = rand() % 2 + 1;
+//	
+//	int num = 0;
+//	printf("サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。\n");
+//	scanf_s("%d", &num);
+//}
+//
+//void checkAnswer(int a, int b) {
+//	if (a == b) {
+//		std::cout << "int, int : "<< std::endl;
+//		printf("正解\n");
+//	}else{
+//		printf("不正解\n");
+//	}
+//}
