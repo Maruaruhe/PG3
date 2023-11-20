@@ -42,6 +42,8 @@ int main(int argc, const char* argv[]) {
 
 	return 0;
 };
+	//SelectNum(n, 3);
+	//SelectNum(n, 3);
 
 
 //void SelectNum( int second) {
