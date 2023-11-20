@@ -27,7 +27,7 @@ int main(int argc, const char* argv[]) {
 	std::cout << "サイコロの出目が奇数と思うなら1,偶数と思うなら2を入力してください。" << std::endl;
 	scanf_s("%d", &diceNumber);
 
-	std::function<void()> random = [=]() {
+	std::function<void()> checkAnswer = [=]() {
 		if (randomNumber == diceNumber) {
 			std::cout << "正解" << std::endl;
 		}
@@ -37,7 +37,7 @@ int main(int argc, const char* argv[]) {
 	};
 
 	std::function<void()> p;
-	p = random;
+	p = checkAnswer;
 	SetTimeOut(p,3);
 
 	return 0;
