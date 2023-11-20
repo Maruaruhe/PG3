@@ -22,7 +22,7 @@ int main() {
 	printf("%d\n", min<int>(100, 200));
 	printf("%f\n", min<float>(10.0f, 20.0f));
 	printf("%lf\n", min<double>(30.0f, 20.0f));
-	min<char>(81, 23);
+	min<char>('d', 'fs');
 
 	return 0;
 }
