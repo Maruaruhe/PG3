@@ -1,21 +1,42 @@
 #include <stdio.h>
 #include <iostream>
-#include "Min.h"
+#include <list>
 
 int main() {
-	Min<int,int> n1(22, 20);
-	Min<int, float> n2(1, 3.6f);
-	Min<int, double> n3(5, 7.6);
-	Min<float, float>n4(3.1f, 2.5f);
-	Min<float, double>n5(1.2f, 0.4);
-	Min<double, double>n6(3.6, 4.3);
 
-	std::cout << "int, int : "<< n1.GetMin() << std::endl;
-	std::cout << "int, float : "<< n2.GetMin() << std::endl;
-	std::cout << "int, double : "<< n3.GetMin() << std::endl;
-	std::cout << "float, float : "<< n4.GetMin() << std::endl;
-	std::cout << "float, double : "<< n5.GetMin() << std::endl;
-	std::cout << "double, double : "<< n6.GetMin() << std::endl;
+	std::list<const char*> lst{
+		"Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani","Nippori","Tabata","Komagome",
+		"Sugamo","Otsuka","Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku","Yoyogi","Harajuku","Shibuya",
+		"Ebisu","Meguro","Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho","Shimbashi","Yurakucho"
+	};
+
+	std::cout << "1970s.\n";
+	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
+
+	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
+		if (*itr == "Tabata") {
+			lst.insert(itr, "Nishi-Nippori");
+		}
+	}
+
+	std::cout << "\n2019s.\n";
+	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
+
+	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
+		if (*itr == "Tamachi") {
+			lst.insert(itr, "Takanawa-Gateway");
+		}
+	}
+
+	std::cout << "\n2022s.\n";
+	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
+
 
 	return 0;
 }
