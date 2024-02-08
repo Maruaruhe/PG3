@@ -1,41 +1,28 @@
 #include <stdio.h>
 #include <iostream>
 #include <list>
+#include <chrono>
 
 int main() {
+	std::string a(100000, 'a');
+	// 実行開始時間
+	std::chrono::steady_clock::time_point before;
+	std::chrono::steady_clock::time_point after;
+	std::chrono::microseconds micro;
 
-	std::list<const char*> lst{
-		"Tokyo","Kanda","Akihabara","Okachimachi","Ueno","Uguisudani","Nippori","Tabata","Komagome",
-		"Sugamo","Otsuka","Ikebukuro","Mejiro","Takadanobaba","Shin-Okubo","Shinjuku","Yoyogi","Harajuku","Shibuya",
-		"Ebisu","Meguro","Gotanda","Osaki","Shinagawa","Tamachi","Hamamatsucho","Shimbashi","Yurakucho"
-	};
+	before = std::chrono::steady_clock::now();
+	std::string b = a;
+	after = std::chrono::steady_clock::now();
 
-	std::cout << "1970s.\n";
-	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
-		std::cout << *itr << "\n";
-	}
+	micro = std::chrono::duration_cast<std::chrono::microseconds>(after - before);
+	printf("%lfmicroSeconds。\n", double(micro.count()));
 
-	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
-		if (*itr == "Tabata") {
-			lst.insert(itr, "Nishi-Nippori");
-		}
-	}
+	before = std::chrono::steady_clock::now();
+	std::string c = std::move(a);
+	after = std::chrono::steady_clock::now();
 
-	std::cout << "\n2019s.\n";
-	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
-		std::cout << *itr << "\n";
-	}
-
-	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
-		if (*itr == "Tamachi") {
-			lst.insert(itr, "Takanawa-Gateway");
-		}
-	}
-
-	std::cout << "\n2022s.\n";
-	for (std::list<const char*>::iterator itr = lst.begin(); itr != lst.end(); ++itr) {
-		std::cout << *itr << "\n";
-	}
+	micro = std::chrono::duration_cast<std::chrono::microseconds>(after - before);
+	printf("%lfmicroSeconds。\n", double(micro.count()));
 
 
 	return 0;
