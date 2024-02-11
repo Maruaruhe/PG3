@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 template <typename Type>
-Type min(Type a, Type b) {
+Type Min(Type a, Type b) {
 	Type num;
 	if (a <= b) {
 		num = a;
@@ -14,15 +14,15 @@ Type min(Type a, Type b) {
 }
 
 template<>
-char min<char>(char a, char b) {
+char Min<char>(char a, char b) {
 	return printf("数字以外は代入できません");
 }
 
 int main() {
-	printf("%d\n", min<int>(100, 200));
-	printf("%f\n", min<float>(10.0f, 20.0f));
-	printf("%lf\n", min<double>(30.0f, 20.0f));
-	min<char>('d', 'fs');
+	printf("%d\n", Min<int>(100, 200));
+	printf("%f\n", Min<float>(10.0f, 20.0f));
+	printf("%lf\n", Min<double>(30.0, 20.0));
+	Min<char>('d', 'fs');
 
 	return 0;
 }
