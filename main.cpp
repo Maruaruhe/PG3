@@ -13,9 +13,9 @@ void checkAnswer(int a, int b) {
 	}
 }
 
-void SetTimeOut(pFunc n, int diceNum, int selectNum) {
+void SetTimeOut(pFunc n, int second,int diceNum, int selectNum) {
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < second; i++) {
 		printf("・");
 		Sleep(1000);
 	}
@@ -32,7 +32,7 @@ int main() {
 
 	pFunc pCallBack;
 	pCallBack = checkAnswer;
-	SetTimeOut(pCallBack, diceNum, num);
+	SetTimeOut(pCallBack, 3,diceNum, num);
 
 
 	return 0;
